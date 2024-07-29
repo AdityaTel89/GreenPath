@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+</style>
+<body>
+    <div class="wrapper">
+<!--        <span class="icon-close">-->
+<!--            <ion-icon name="close-outline"></ion-icon>-->
+<!--        </span>-->
+
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="/login" name="login_form" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+<!--                <div class="remember-forgot">-->
+<!--                    <label><input type="checkbox">Remember me</label>-->
+<!--                    <a href="#">Forgot Password?</a>-->
+<!--                </div>-->
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Sign up</h2>
+            <form action="/signup" name="signup_form" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-sharp"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" required>I agree to the terms & condition</label>
+                </div>
+                <button type="submit" class="btn">Sign up</button>
+                <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+{% endblock %}

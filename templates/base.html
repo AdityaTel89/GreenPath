@@ -1,0 +1,249 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Green Path</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    color: #fff;
+    padding: 0;
+    background-image: url("../static/images/bg2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+header{
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.642);
+    background-color: rgba(0, 0, 0, 0.59);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.logo{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+    width: 30%;
+    display: flex;
+    justify-content:flex-start;
+    align-items:center ;
+}
+
+.imglogo{
+    height: 2em;
+    width: 2em;
+    padding-right: 5px;
+}
+
+a{
+    text-align: center;
+}
+
+
+
+nav ul{
+    float:inline-start;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+}
+.check-btn{
+    font-size: 40px;
+    color: #fff;
+    float:inline-end;
+    cursor: pointer;
+    display: none;
+    margin-left: 20px;
+}
+#check{
+    display: none;
+}
+@media (max-width: 1300px) {
+    .check-btn{
+        display: block;
+    }
+    ul{
+        margin-top: 60px;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        background: rgba(9, 9, 9, 0.823);
+        transition: all .5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    a:hover,a.home{
+        background: none;
+    }
+    #check:checked ~ul{
+        left:0
+    }
+}
+@media (max-width: 470px){
+    .logo{
+        font-size: 1.3em;
+    }
+
+}
+
+
+
+
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 60px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+.navigation .help::after{width: 40px;}
+.navigation .home::after{width: 55px;}
+.navigation .about::after{width: 55px;}
+.navigation .learn::after{width: 50px;}
+
+.navigation a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.navigation .btnLogin-sign{
+    width: 130px;
+    height:50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+}
+.navigation .btnLogin-sign:hover{
+    background: #fff;
+    color: black;
+}
+    </style>
+</head>
+
+<body>
+    <!-- existing body content -->
+
+    <header>
+        <h2 class="logo">
+            <img class="imglogo" src="../static/images/image.png" alt="image"> Green Path
+        </h2>
+        <nav class="navigation">
+            <input type="checkbox" id="check">
+            <label for="check" class="check-btn">
+                <span class="response-bar">
+                    <ion-icon name="reorder-three-outline"></ion-icon>
+                </span>
+            </label>
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="home">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="about">About</a></li>
+                <li><a href="{{ url_for('learn') }}" class="learn">Learn</a></li>
+                <li><a href="{{ url_for('index') }}" class="detect">Detect</a></li>
+                <li><a href="{{ url_for('search') }}" class="Search">Report</a></li>
+                <li><a href="{{ url_for('help') }}" class="help">Help</a></li>
+            </ul>
+            <button class="btnLogin-sign" id="loginBtn" onclick="handleLogin()">Login/Sign in</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="content" style="margin-top:2em">{% block content %}{% endblock %}</div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function handleLogin() {
+            const status = sessionStorage.getItem('status');
+            if (status === 'True') {
+                // Log out
+                sessionStorage.setItem('status', 'False');
+                window.location.href = "/";
+            } else {
+                // Redirect to login page
+                window.location.href = "/";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const status = sessionStorage.getItem('status');
+            if (status === 'True') {
+                loginBtn.textContent = 'Logout';
+            } else {
+                loginBtn.textContent = 'Login/Sign in';
+            }
+        });
+    </script>
+</body>
+<footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+</footer>
+
+</html>

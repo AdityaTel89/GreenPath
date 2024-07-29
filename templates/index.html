@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% block content %}
+
+<script>
+    function sessionExists(key) {
+        return sessionStorage.getItem(key) !== null;
+    }
+
+    const status = sessionStorage.getItem('status');
+    if (!sessionExists('status') || status === 'False') {
+        window.location.href = "/";
+    }
+</script>
+<style>
+
+    body{
+    color: #fff;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+    .container{
+        text-align: center;
+        width: 100%;
+        backdrop-filter: blur(3px);
+        padding : 10px;
+
+    }
+
+    .img{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .bttn{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #228a44;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+.bttn::before {
+    content: '';
+    background: #228a44;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+
+  }
+
+  .bttn:hover::before {
+    width: 100%;
+  }
+
+  .bttn:hover {
+    border: none;
+  }
+  .select{
+    border-radius: 10px;
+    background: #228a45cf;
+    padding: 15px;
+    cursor: pointer;
+    }
+    .select:hover{
+    background: #228a44;
+    }
+   .navigation .detect{
+      color: #4F963C;
+      font-weight: bold;
+   }
+
+</style>
+<body>
+<div class="container">
+<h1>Traffic Sign Detection</h1><br>
+<div>
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <label for="imageUpload" class="select">
+            Upload image..
+        </label>
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+
+    <div class="image-section img" style="display:none;">
+        <div class="img-preview">
+            <div id="imagePreview">
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn bttn" id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span> </span>
+    </h3>
+
+</div>
+</div>
+
+{% endblock %}
+
+</body>

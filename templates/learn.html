@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning</title>
+    <link rel="stylesheet" href="../static/css/learn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+   .navigation .learn{
+      color: #4F963C;
+      font-weight: bold;
+   }
+</style>
+<body>
+
+
+
+
+    <div id="card-area">
+        <div class="wrapper">
+            <div class="box-area">
+                <!-- Cards will be added dynamically here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        // Array of image URLs
+const imageUrls = [
+    "../static/images/signs/0.png", "../static/images/signs/1.png", "../static/images/signs/2.png", "../static/images/signs/3.png", "../static/images/signs/4.png", "../static/images/signs/5.png", "../static/images/signs/6.png",
+    "../static/images/signs/7.png", "../static/images/signs/8.png", "../static/images/signs/9.png", "../static/images/signs/10.png", "../static/images/signs/11.png", "../static/images/signs/12.png", "../static/images/signs/13.png",
+    "../static/images/signs/14.png", "../static/images/signs/15.png", "../static/images/signs/16.png", "../static/images/signs/17 b.png", "../static/images/signs/18.png", "../static/images/signs/19.png", "../static/images/signs/20.png",
+    "../static/images/signs/21.png", "../static/images/signs/22.png", "../static/images/signs/23.png", "../static/images/signs/24.png", "../static/images/signs/25.png", "../static/images/signs/26.png", "../static/images/signs/27.png", "../static/images/signs/28.png",
+    "../static/images/signs/29.png", "../static/images/signs/30.png", "../static/images/signs/31.png", "../static/images/signs/32.png", "../static/images/signs/33.png", "../static/images/signs/34.png", "../static/images/signs/35.png",
+    "../static/images/signs/36.png", "../static/images/signs/37.png", "../static/images/signs/38.png", "../static/images/signs/39.png", "../static/images/signs/40.png", "../static/images/signs/41.png", "../static/images/signs/42.png"
+];
+
+
+        const trafficSigns = [
+    { type: "Speed Limit 20 km/h", description: "Informs drivers that the maximum speed allowed is 20 kilometers per hour." },
+    { type: "Speed Limit 30 km/h", description: "Appears to be a speed limit sign with the number 30 inside." },
+    { type: "Speed Limit 50 km/h", description: "Indicating a speed limit of 50 kilometers per hour." },
+    { type: "Speed Limit 60 km/h", description: "Indicating a speed limit of 60 kilometers per hour." },
+    { type: "Speed Limit 70 km/h", description: "Indicating a speed limit of 70 kilometers per hour." },
+    { type: "Speed Limit 80 km/h", description: "Indicates a speed limit of 80 kilometers per hour. Traffic signs universally regulate traffic for road safety."},
+    { type: "Speed Limit No Speed Limit (Crossed Out)", description: "Indicates that there is no speed limit of 80 kilometers per hour." },
+    { type: "Speed Limit 100 km/h", description: "Indicates a speed limit of 100 kilometers per hour." },
+    { type: "Speed Limit 120 km/h", description: "Indicating a maximum speed limit of 120 kilometers per hour." },
+    { type: "No Parking", description: "Indicates that parking is prohibited on that side of the road." },
+    { type: "No Overtaking", description: "Prohibits vehicles from overtaking both cars and trucks in the designated area." },
+    { type: "Merging Lane", description: "Warning sign for a merging lane, indicating that traffic from two lanes will combine into a single lane." },
+    { type: "Give Way", description: "Drivers must give way to oncoming traffic." },
+    { type: "Give Way to the Right", description: "Indicates that traffic should give way to the fellow traffic on the right." },
+    { type: "Stop", description: "Drivers should immediately stop after seeing this sign." },
+    { type: "No Entry", description: "Indicates a restricted area where no vehicles are allowed to enter." },
+    { type: "Heavy Vehicle Allowed", description: "Indicates that heavy vehicles are allowed." },
+    { type: "Straight Prohibitor No Entry", description: "Indicates a restricted area where straight entry is prohibited." },
+    { type: "Warning", description: "General warning sign used to warn drivers of a potential hazard ahead." },
+    { type: "Dangerous Bend to the Left", description: "Indicates a dangerous bend to the left." },
+    { type: "Dangerous Bend to the Right", description: "Indicates a dangerous bend to the right." },
+    { type: "Continuous Dangerous Bends to the Right", description: "Indicates continuous dangerous bends to the right." },
+    { type: "Reduce Speed Hump", description: "Cautions the driver to reduce speed to cross the hump comfortably." },
+    { type: "Slippery Road", description: "Indicates slippery condition of road ahead." },
+    { type: "Narrow Road", description: "Cautions the driver to be careful as the road ahead is narrow." },
+    { type: "Road Work Ahead", description: "Indicates that laborers are working on the road ahead." },
+    { type: "Traffic Light", colors: ["Red: Stop", "Yellow: Wait and Go", "Green: Go"], description:  "Red:Stop Yellow:Wait and Go Green:Go. Three-color sign indicating traffic light signals." },
+    { type: "Zebra Crossing", description: "Indicates a crossing for pedestrians." },
+    { type: "Pedestrian Crossing", description: "Indicates that pedestrians should cross the road." },
+    { type: "Bicycle Zone", description: "Indicates the entrance to a bicycle zone." },
+    { type: "Snowfall/Icing Warning", description: "To warn in a dangerous area due to heavy snowfall or icing." },
+    { type: "Wildlife Crossing", animal: "Deer", description: "Warns drivers of deer that may be crossing the road ahead." },
+    { type: "No Stopping", description: "Prohibits drivers from stopping their vehicles in the area." },
+    { type: "Right Hand Curve Ahead", description: "Cautions the driver about a right-hand curve ahead." },
+    { type: "Left Hand Curve Ahead", description: "Cautions the driver about a left-hand curve ahead." },
+    { type: "Go Straight", description: "Driver should go straight." },
+    { type: "Continue Straight or Turn Right", description: "Indicates that drivers can either continue straight or turn right." },
+    { type: "Continue Straight or Turn Left", description: "Indicates that drivers can either continue straight or turn left." },
+    { type: "Right Turn Only Lane", description: "Marks a lane designated for right turns only." },
+    { type: "Left Turn Only Lane", description: "Marks a lane designated for left turns only." },
+    { type: "Roundabout Warning", description: "Warns drivers that they are approaching a roundabout and should yield to traffic already in the roundabout." },
+    { type: "No Overtaking Zone", description: "Prohibits drivers from overtaking other vehicles in the area." },
+    { type: "No Trucks Allowed", description: "Informs drivers that trucks are prohibited from entering the area." }
+];
+
+        // Function to create card HTML for each image URL
+        function createCard(imageSrc, title, description) {
+            return `
+                <div class="box">
+                    <img src="${imageSrc}" alt="">
+                    <div class="overlay">
+                        <h2>${title}</h2>
+                        <p style="font-size:1em">${description}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to add cards to the card area
+        function addCards() {
+        const cardArea = document.querySelector(".box-area");
+
+        trafficSigns.forEach((trafficSign, index) => {
+            // Use index to get the corresponding image URL
+            const imageUrl = imageUrls[index];
+            const card = createCard(imageUrl, trafficSign.type, trafficSign.description);
+            cardArea.innerHTML += card;
+        });
+    }
+
+        // Call the addCards function to add cards to the card area
+        addCards();
+    </script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+{% endblock %}
+</html>

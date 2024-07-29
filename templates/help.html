@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Path</title>
+    <link rel="stylesheet" href="../static/css/help.css">
+</head>
+<style>
+   .navigation .help{
+      color: #4F963C;
+      font-weight: bold;
+   }
+</style>
+<body>
+    <div class="container">
+        <section class="intro">
+            <h2>Welcome to Green Path's Educational Resources!</h2>
+            <p>Our Learn page is dedicated to helping users understand various traffic signs and their meanings. You can explore a wide range of signs by simply clicking on each one to access detailed descriptions. This interactive learning experience is designed to reinforce knowledge about speed limits, warnings, regulatory information, and guidance signs. Whether you're a new driver or looking to refresh your knowledge, our regularly updated educational content ensures you stay informed and safe on the roads.</p>
+        </section>
+        <br>
+        <main>
+            <a href="http://127.0.0.1:5001/index" style="text-decoration: none;">
+                <section id="predict">
+                    <h2>Predict Page</h2>
+                    <h3>Steps to Use Traffic Sign Detection:</h3>
+                    <ol>
+                        <li>Go to the Detect Page: Click the "Detect" link in the top navigation bar to access the page.</li>
+                        <li>Upload an Image: Click "Upload Image..." under "Traffic Sign Detection" and choose an image from your device.</li>
+                        <li>View the Result: Once uploaded, the system will process the image and display the detected traffic sign and its classification.</li>
+                    </ol>
+                    <h3>Tips for Best Results:</h3>
+                    <ul>
+                        <li>Image Quality: Use clear, non-blurry images for better classification.</li>
+                        <li>Sign Visibility: Ensure the traffic sign is clearly visible without obstructions.</li>
+                        <li>Lighting Conditions: Good lighting aids in accurate detection and classification.</li>
+                    </ul>
+                </section>
+            </a>
+            
+            
+            <a href="http://127.0.0.1:5001/search" style="text-decoration: none;">
+                <section id="search">
+                    <h2>Search Page</h2>
+                    <h3>Steps to Use Navigation Assistance:</h3>
+                    <ol>
+                        <li>Go to the Search Page: Click the "Search" link in the top navigation bar to access the page.</li>
+                        <li>Enter Your Location: Type your starting location in the search bar (e.g., city name or address).</li>
+                        <li>Perform the Search: Click "Search" to update the map with routes and your entered location.</li>
+                    </ol>
+                    <h3>Tips for Best Results:</h3>
+                    <ul>
+                        <li>Accurate Location Input: Provide a precise location for better search accuracy.</li>
+                        <li>Use Current Location: Allow access to your current location for real-time navigation assistance.</li>
+                        <li>Check Traffic Conditions: Review current traffic conditions on the map for the safest and fastest route.</li>
+                    </ul>
+                </section>
+            </a>
+            
+            
+            <a href="http://127.0.0.1:5001/learn" style="text-decoration: none;">
+                <section id="learn">
+                    <h2>Learn Page</h2>
+                    <h3>Steps to Use Educational Resources:</h3>
+                    <ol>
+                        <li>Go to the Learn Page: Click the "Learn" link in the top navigation bar to access the page.</li>
+                        <li>Browse Traffic Signs: Explore various traffic signs displayed on the page, each representing different road rules or warnings.</li>
+                        <li>Understand Sign Details: Click any traffic sign to view detailed information about it. For example, "Speed Limit 20 km/h" indicates a maximum speed of 20 kilometers per hour.</li>
+                    </ol>
+                    <h3>Key Traffic Signs and Their Meanings:</h3>
+                    <ul>
+                        <li>Speed Limit Signs: Specify the maximum speed allowed in an area (e.g., 20 km/h, 30 km/h).</li>
+                        <li>Warning Signs: Alert drivers to potential hazards (e.g., "Pedestrian Crossing", "Sharp Turn").</li>
+                        <li>Prohibitory Signs: Provide specific instructions (e.g., "Stop", "No Entry").</li>
+                    </ul>
+                </section>
+            </a>
+            
+        </main>
+        <footer>
+            <div class="contact">
+                <p>Email: contact@greenpath.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Green Path Ave, Springfield, USA</p>
+            </div>
+        </footer>
+    </div>
+</body>
+{% endblock %}
+</html>
