@@ -12,6 +12,17 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
+
+# Load environment variables
+load_dotenv()
+
+
+# Get the connection URI from environment variable
+MONGO_URI = os.getenv("MONGO_URI")
+
+# Connect to MongoDB Atlas
+client = pymongo.MongoClient(MONGO_URI)
+db = client.get_default_database()  # or db = client['Green_Path'] if needed
 # Load model
 MODEL_PATH = 'model.h5'
 model = load_model(MODEL_PATH)
